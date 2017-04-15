@@ -33,7 +33,14 @@ use Psr\Cache\CacheItemPoolInterface;
  */
 class Pool implements CacheItemPoolInterface
 {
+    /**
+     * @var \Doctrine\Common\Cache\CacheProvider
+     */
     protected $handler;
+
+    /**
+     * @var array
+     */
     protected $items;
 
     public function __construct(CacheProvider $handler)

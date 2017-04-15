@@ -31,9 +31,24 @@ use Psr\Cache\CacheItemInterface;
  */
 class Item implements CacheItemInterface
 {
+    /**
+     * @var string
+     */
     protected $key;
+
+    /**
+     * @var mixed
+     */
     protected $value;
+
+    /**
+     * @var boolean
+     */
     protected $isHit;
+
+    /**
+     * @var integer
+     */
     protected $ttl;
 
     public function __construct($key, $value, $isHit, $ttl = 0)
