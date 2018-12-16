@@ -21,6 +21,7 @@
 namespace PSX\Cache\Tests;
 
 use Doctrine\Common\Cache\ArrayCache;
+use PHPUnit\Framework\TestCase;
 use PSX\Cache\Pool;
 
 /**
@@ -30,7 +31,7 @@ use PSX\Cache\Pool;
  * @license http://www.apache.org/licenses/LICENSE-2.0
  * @link    http://phpsx.org
  */
-class PoolTest extends \PHPUnit_Framework_TestCase
+class PoolTest extends TestCase
 {
     public function testCache()
     {

@@ -21,6 +21,7 @@
 namespace PSX\Cache\Tests;
 
 use Doctrine\Common\Cache\ArrayCache;
+use PHPUnit\Framework\TestCase;
 use PSX\Cache\SimpleCache;
 
 /**
@@ -30,7 +31,7 @@ use PSX\Cache\SimpleCache;
  * @license http://www.apache.org/licenses/LICENSE-2.0
  * @link    http://phpsx.org
  */
-class SimpleCacheTest extends \PHPUnit_Framework_TestCase
+class SimpleCacheTest extends TestCase
 {
     public function testCache()
     {

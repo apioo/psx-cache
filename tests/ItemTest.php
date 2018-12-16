@@ -22,6 +22,7 @@ namespace PSX\Cache\Tests;
 
 use DateInterval;
 use DateTime;
+use PHPUnit\Framework\TestCase;
 use PSX\Cache\Item;
 
 /**
@@ -31,7 +32,7 @@ use PSX\Cache\Item;
  * @license http://www.apache.org/licenses/LICENSE-2.0
  * @link    http://phpsx.org
  */
-class ItemTest extends \PHPUnit_Framework_TestCase
+class ItemTest extends TestCase
 {
     public function testExpiresAtInteger()
     {
