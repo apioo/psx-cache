@@ -22,6 +22,7 @@ namespace PSX\Cache\Tests;
 
 use DateInterval;
 use DateTime;
+use TypeError;
 use PHPUnit\Framework\TestCase;
 use PSX\Cache\Item;
 
@@ -69,15 +70,13 @@ class ItemTest extends TestCase
         $this->assertEquals(0, $item->getTtl());
     }
 
-    /**
-     * @expectedException \PSX\Cache\Exception
-     */
     public function testExpiresAtInvalidType()
     {
         $item = new Item('key', null, false);
 
         $this->assertEquals(0, $item->getTtl());
 
+        $this->expectException(TypeError::class);
         $item->expiresAt('foo');
     }
 
@@ -116,15 +115,13 @@ class ItemTest extends TestCase
         $this->assertEquals(0, $item->getTtl());
     }
 
-    /**
-     * @expectedException \PSX\Cache\Exception
-     */
     public function testExpiresAfterInvalidType()
     {
         $item = new Item('key', null, false);
 
         $this->assertEquals(0, $item->getTtl());
 
+        $this->expectException(TypeError::class);
         $item->expiresAfter('foo');
     }
 }

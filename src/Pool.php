@@ -36,12 +36,12 @@ class Pool implements CacheItemPoolInterface
     /**
      * @var \Doctrine\Common\Cache\CacheProvider
      */
-    protected $handler;
+    protected CacheProvider $handler;
 
     /**
      * @var array
      */
-    protected $items;
+    protected array $items;
 
     public function __construct(CacheProvider $handler)
     {
@@ -54,7 +54,7 @@ class Pool implements CacheItemPoolInterface
         $this->handler = $handler;
     }
 
-    public function getItem($key)
+    public function getItem(string $key): CacheItemInterface
     {
         $data = $this->handler->fetch($key);
 
@@ -65,7 +65,7 @@ class Pool implements CacheItemPoolInterface
         }
     }
 
-    public function getItems(array $keys = array())
+    public function getItems(array $keys = []): iterable
     {
         $result = [];
         $data   = $this->handler->fetchMultiple($keys);
@@ -81,22 +81,22 @@ class Pool implements CacheItemPoolInterface
         return $result;
     }
 
-    public function hasItem($key)
+    public function hasItem(string $key): bool
     {
         return $this->handler->contains($key);
     }
 
-    public function clear()
+    public function clear(): bool
     {
         return $this->handler->flushAll();
     }
 
-    public function deleteItem($key)
+    public function deleteItem(string $key): bool
     {
         return $this->handler->delete($key);
     }
 
-    public function deleteItems(array $keys)
+    public function deleteItems(array $keys): bool
     {
         $result = true;
         foreach ($keys as $key) {
@@ -108,19 +108,19 @@ class Pool implements CacheItemPoolInterface
         return $result;
     }
 
-    public function save(CacheItemInterface $item)
+    public function save(CacheItemInterface $item): bool
     {
         return $this->handler->save($item->getKey(), $item->get(), $item->getTtl());
     }
 
-    public function saveDeferred(CacheItemInterface $item)
+    public function saveDeferred(CacheItemInterface $item): bool
     {
         $this->items[] = $item;
 
         return true;
     }
 
-    public function commit()
+    public function commit(): bool
     {
         $result = true;
         foreach ($this->items as $item) {

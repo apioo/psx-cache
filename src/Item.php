@@ -34,24 +34,24 @@ class Item implements CacheItemInterface
     /**
      * @var string
      */
-    protected $key;
+    protected string $key;
 
     /**
      * @var mixed
      */
-    protected $value;
+    protected mixed $value;
 
     /**
      * @var boolean
      */
-    protected $isHit;
+    protected bool $isHit;
 
     /**
      * @var integer
      */
-    protected $ttl;
+    protected int $ttl;
 
-    public function __construct($key, $value, $isHit, $ttl = 0)
+    public function __construct(string $key, mixed $value, bool $isHit, int $ttl = 0)
     {
         $this->key   = $key;
         $this->value = $value;
@@ -59,22 +59,22 @@ class Item implements CacheItemInterface
         $this->ttl   = $ttl;
     }
 
-    public function getKey()
+    public function getKey(): string
     {
         return $this->key;
     }
 
-    public function get()
+    public function get(): mixed
     {
         return $this->value;
     }
 
-    public function isHit()
+    public function isHit(): bool
     {
         return $this->isHit;
     }
 
-    public function set($value)
+    public function set(mixed $value): static
     {
         $this->value = $value;
 
@@ -84,7 +84,7 @@ class Item implements CacheItemInterface
     /**
      * @inheritdoc
      */
-    public function expiresAt($expiration)
+    public function expiresAt(int|\DateTimeInterface|null $expiration): static
     {
         if (is_int($expiration)) {
             $this->ttl = $expiration - time();
@@ -99,7 +99,7 @@ class Item implements CacheItemInterface
         return $this;
     }
 
-    public function expiresAfter($time)
+    public function expiresAfter(int|\DateInterval|null $time): static
     {
         if (is_int($time)) {
             $this->ttl = $time;
@@ -116,7 +116,7 @@ class Item implements CacheItemInterface
         return $this;
     }
 
-    public function getTtl()
+    public function getTtl(): int
     {
         return $this->ttl;
     }
