@@ -31,7 +31,7 @@
     }
   },
   "provide": {
-    "psr/cache-implementation": "3.0",
+    "psr/cache-implementation": "2.0|3.0",
     "psr/simple-cache-implementation": "1.0"
   }
 }
