@@ -3,8 +3,12 @@ php:
   - 7.3
   - 7.4
   - 8.0
+matrix:
+  include:
+    - php: 8.0
+      env: 'COMPOSER_FLAGS="--prefer-stable --prefer-lowest"'
 sudo: false
 install:
-  - composer install
+  - travis_retry composer update ${COMPOSER_FLAGS} --no-interaction
 script:
   - vendor/bin/phpunit
