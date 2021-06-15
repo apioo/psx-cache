@@ -2,13 +2,13 @@
   "name": "psx/cache",
   "description": "PSR-6 and PSR-16 implementation using the doctrine cache system",
   "keywords": ["cache", "doctrine", "psr-6", "psr-16"],
-  "homepage": "http://phpsx.org",
+  "homepage": "https://phpsx.org",
   "license": "Apache-2.0",
   "authors": [
     {
       "name": "Christoph Kappestein",
       "email": "christoph.kappestein@gmail.com",
-      "homepage": "http://christoph.kappestein.com/"
+      "homepage": "https://chrisk.app"
     }
   ],
   "require": {
